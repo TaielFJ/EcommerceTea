@@ -1,0 +1,56 @@
+<header>
+        
+    <button class="burguer-menu header-menu" id="btn-menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    
+    <nav class="nav-bar" id="menu">
+        <ul class="li-container">
+           <% if(session.user) { %> 
+            <li><a href="/productos/all"><i class="fa-solid fa-mug-hot"></i><p>Nuestros Productos</p></a></li>
+            <% } %> 
+                
+            <li><a href="/about"><i class="fa-solid fa-user-group"></i><p>Sobre Nosotros</p></a></li>
+
+            <% if (session.user) { %>
+                <li><a href="/carrito"><i class="fa-solid fa-cart-arrow-down"></i><p>Mi Carrito</p></a></li>
+                <li><a href="/profile"><i class="fa-solid fa-user-pen"></i><p>Mi Perfil</p></a></li>
+                <% if (session.user && session.user.rol == 1) { %>
+                    <li><a href="/admin"><i class="fa-solid fa-user-shield"></i><p>Admin</p></a></li>
+                <% } %>
+                <li><a href="/logout"><i class="fa-solid fa-arrow-right-to-bracket"></i></i><p>Cerrar Sesión</p></a></li>
+                <div class="avatar-container">
+                    <img class="avatar" src="<%=session.user.avatar%>" alt="">
+                    <% if (typeof session.user != "undefined") { %>
+                        <div class="user-online"></div>
+                    <% } %>
+                    
+                </div>
+            <% } else {%>
+                <li><a href="/login"><i class="fa-solid fa-user"></i><p>Iniciar Sesión</p></a></li>
+                <li><a href="/register"><i class="fa-solid fa-address-card"></i><p>Registrarse</p></a></li>
+            <% } %> 
+            
+        </ul>
+        
+        
+    </nav>
+    
+    <a href="/" class="logo-container"><img src="/img/Logo.png" alt="Logo" class="img-header"></a>
+     
+
+    <!--<div class="carrito header-menu">
+        <a href="/carrito"><i class="fa-solid fa-cart-arrow-down"></i></a>
+    </div>-->
+    <!--Button modo oscuro-->
+    <div class="darkModeContainer">
+        <i class="fa-solid fa-sun"></i>
+          <label for="checkDarkMode" class="toggle__container">
+               <input type="checkbox" id="checkDarkMode" class="toggle__input">
+              <div class="toggle__fill"></div>
+          </label>
+          <i class="fa-solid fa-moon"></i>
+      </div>
+
+</header>
+

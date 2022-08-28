@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+    <%-include("partials/headAdmin")%>
+<body>
+    <%-include("partials/headerAdmin")%>
+    <main class="main__adminIndex">
+        <article class="adminIndex__article">
+            <h2><%=postHeader + session.user.name%>!</h2>
+        </article>
+        
+        <article class="adminIndex__article adminIndex__article__items">
+            <a href="/admin/productos">Productos</a>
+            <a href="/admin/users">Usuarios</a>
+            <a href="/admin/categories">Categorías</a>
+        </article>
+    </main>
+    <%-include("partials/footerAdmin")%>
+</body>
+</html>

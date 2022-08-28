@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+    <link rel="stylesheet" href="/css/changePassword.css" type="text/css">
+    <%-include("../partials/head")%>
+    
+<body>
+    <%-include("../partials/header")%>
+    <%-include("../partials/background")%>
+    <main id="mainChange">
+        <div id="containerChange">
+            <div id="primerDivChange">
+                <div id="segundoDiv">
+                    <h2>Coloque su contraseña actual</h2>
+                </div>
+                <div id="segundoDiv">
+                    <form action="/profile/change/<%= session.user.id %>" method="post" class="formChange">
+                        <input type="password" id="inCA" name="pass" >
+                        <div class="butonVe">
+                            <button type="submit" id="BVerificar">Verificar</button>
+                        </div>
+                        
+                        <% if (locals.errors && errors.pass) { %>
+                            <span class="error-message"><%=errors.pass.msg%></span>
+                        <% } %>
+                    </form>
+                     
+                    <!-- <span id="spanchange"></span> -->
+                </div>
+        </div>
+        
+    </main>
+    <script src="/js/changePassword.js"></script>
+    
+
+</body>
+</html>

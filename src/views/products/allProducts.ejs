@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<%-include("../partials/head")%>
+
+<body >
+
+    <%-include("../partials/header")%>
+    <%-include("../partials/background")%>
+    
+    <main class="back-grad products__filter">
+        
+        <section>
+            
+            <article class="back-grad">
+
+                <h3 class="text-center">TODOS NUESTROS PRODUCTOS</h3>
+                <div class="products__filter__container">
+                    
+                    <div class="containerCategory">
+                        <a class="cardCategory cardCategoryAll" href="/productos/all">
+                            <h3 class="cardCategory_name">Todos</h3>
+                        </a>
+                        <!--Container de categorias-->
+                    </div>
+                    <div class="pf__filters">
+                            <input type="search" id="search__product" placeholder="Buscar productos">
+
+                            <select name="price" id="price__filter">
+                                <option value="" hidden selected>Ordenar por</option>
+                                <option value="mayor">Mayor Precio</option>
+                                <option value="menor">Menor Precio</option>
+                            </select>
+                    </div>
+                    <div class="pf__products">
+                        <!--Container de productos-->
+                    </div>
+                    </div>
+                </div>
+
+            </article>
+            
+
+        </section>
+    </main>
+    <%-include("../partials/footer")%>
+    <script src="/js/products/productsFilter.js"></script>
+    <script src="/js/products/zcarrito.js"></script>
+    
+    <script src="/js/products/pedido.js"></script>
+
+    <script src="/js/products/compra.js"></script>
+    
+    
+</body>
+
+</html>

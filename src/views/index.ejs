@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<%-include("./partials/head")%>
+
+<body>
+
+    <%-include("./partials/header")%>
+    <main class="back-grad">
+        <%-include("./partials/background")%>
+        <section>
+
+        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/img/banner1.png" class="d-block vw-100" alt="Promo1">
+              </div>
+              <div class="carousel-item">
+                <img src="/img/banner2.png" class="d-block vw-100" alt="Promo2">
+              </div>
+              <div class="carousel-item">
+                <img src="/img/banner3.png" class="d-block vw-100" alt="Promo3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+                <div class="container-products">
+
+                    <h3>PRODUCTOS DESTACADOS</h3>
+                    <span class="arrowSlider arrowSliderLeft"><i class="fa-solid fa-chevron-left"></i></span>
+                    <div class="div_container-products slider">
+
+                        <% productos.forEach(producto => { %>
+                            <% if(session.user){  %> 
+
+                                <a href="/productos/<%=producto.id%>" class="item-products" id="<%=producto.id%>">
+                                    <img src="<%=producto.images[0].src%>" alt="<%=producto.name%>" class="img-products">
+                                    <div class="item-product-price">
+                                        <h4><%=producto.name%></h4>
+                                        <p class="actual">$<%=producto.price%></p>
+
+                                            <button class="buttonProduct" id="<%=producto.id%>"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+
+                                    </div>
+                                    <% if (producto.discount > 0) { %>
+
+                                        <div class="item-product-discount">
+                                            <p class="offer"><%=producto.discount%>% de descuento</p>
+                                        </div>
+                                    <% } %>
+
+                            
+                                </a>
+                            <% }else {  %>     
+                                <a href="/login" class="item-products" id="<%=producto.id%>">
+                                    <img src="<%=producto.images[0].src%>" alt="<%=producto.name%>" class="img-products">
+                                    <div class="item-product-price">
+                                        <h4><%=producto.name%></h4>
+                                        <p class="actual">Precio: $<%=producto.price%></p>
+
+                                            <button class="buttonProduct"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+
+                                    </div>
+                                    <% if (producto.discount > 0) { %>
+
+                                        <div class="item-product-discount">
+                                            <p class="offer"><%=producto.discount%>% de descuento</p>
+                                        </div>
+                                    <% } %>
+
+                            
+                                </a>
+                            <% } %> 
+                        <% }) %>
+
+                    </div>
+                    <span class="arrowSlider arrowSliderRight"><i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+                <!--Categorias-->
+                <h3 class="text-center m-3">PRODUCTOS POR CATEGORÍA</h3>
+                <div class="containerCategory">
+                    <% categories.forEach(category => { %>
+                        <a class="cardCategory <%=`cardCategory${category.id}`%>" href="/productos/all/<%=category.id%>">
+                            <h3 class="cardCategory_name"><%= category.name%></h3>
+                        </a>
+                    <% }) %>
+                </div>
+
+                <div class="medios-pago">
+                    <h3>PODES ABONAR CON ESTOS MEDIOS DE PAGO</h3>
+                    <div class="medios-pago-correccion">
+
+                        <div class="tarjeta">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <p class="p_title">Tarjetas de crédito o débito</p>
+                            <p class="p_content">Pagá en cuotas sin interés o hacelo al contado con tu tarjeta de débito.</p>
+                        </div>
+    
+                        <hr>
+    
+                        <div class="efectivo">
+                            <i class="fa-solid fa-money-bill-1-wave"></i>
+                            <p class="p_title">¿Preferís pagar en efectivo?</p>
+                            <p class="p_content">Cuando compres, te daremos un código para que puedas pagar en cualquier sucursal.</p>
+                        </div><br>
+                    </div>
+                    <div class="formulario">
+                        <form action="/sendMail" method="post">
+                            <label for="newsletter">
+                                Dejanos tu mail para recibir todas las ofertas!
+                                <input type="email" name="email" id="newsletter" placeholder="Ingresa tu @mail">
+                            </label>
+                            <button type="submit" id="newsletter"> ENVIAR!</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="carritouwu" id="carritonone">
+                    <div id="listaCarrito">
+
+                    </div>
+                    <button type="submit"  id="vaciarCarro">vaciar carrito</button>
+                    <button type="submit" id="irACarritoEntero">ir al carrito entero</button>
+                </div>
+
+            
+
+        </section>
+    </main>
+    <%-include("./partials/footer")%>
+    <script src="/js/slider.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(session.user) { %> 
+    <script src="/js/products/zcarrito.js"></script>
+    <% } %> 
+</body>
+</html>

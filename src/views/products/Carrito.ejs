@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include("../partials/head")%>
+<body>
+    <%-include("../partials/header")%>
+    <%-include("../partials/background")%>
+    <main class="main-carrito">
+        <section class="section-pedidos" id="carrito">
+                <th><b>imagen</b></th>
+                <th><b>nombre</b></th>
+                <th><b>Precio</b></th>
+                <th><b>Cantidad</b></th>
+                <th><b>Eliminar</b></th>
+        </section>
+        <div class="carritouwu">
+            <div id="listaCarrito">
+                <!-- contenido del carrito -->
+            </div class="divdebotonescarrito">
+            <div id="botonesCRT">
+            <button type="submit"  id="vaciarCarro"  class="botondelcarrito">Vaciar carrito</button>
+           
+            <button type="submit"  class="botondelcarrito" id="continuarCarrito">Continuar comprando</button>
+            </div>
+        </div>
+        <div class="totalCarrito" id="PAGARcarritot">
+            <div class="subtotalTTT">
+                <p>TOTAL</p>
+                <p id="total"></p> 
+            </div>
+            <div class="botonDepagar">
+                <button type="submit" id="irAPagar" class="botondelcarrito">Realizar Compra</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/products/pedido.js"></script>
+
+</body>
+</html>
